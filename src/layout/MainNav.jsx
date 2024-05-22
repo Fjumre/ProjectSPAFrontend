@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom"
-import Home from "../page/Home"
-import LoginForm from "../auth/LoginForm"
+
 
 
 function MainNav(){
