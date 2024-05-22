@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import styled from 'styled-components';
 import Applayout from './layout/Applayout';
 import PageNotFound from './page/PageNotFound';
 import Home from './page/Home';
@@ -9,7 +8,7 @@ import { useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Calendar from './page/Calendar';
-import ToDoList from './services/ToDoList';
+import ToDoList from './service/ToDoList';
 import RegistrationForm from './auth/Registration';
 import LogoutForm from './auth/LogoutForm';
 
