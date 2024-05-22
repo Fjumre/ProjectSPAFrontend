@@ -9,7 +9,7 @@ const ToDoList = () => {
   
   useEffect(() => {
     // Fetch todos for the specific date
-    axios.get(`/api/list/${date}`).then(response => {
+    axios.get(`/api/user/list/${date}`).then(response => {
       setTodos(response.data);
     }).catch(error => {
       console.error('Error fetching todos:', error);
@@ -17,7 +17,7 @@ const ToDoList = () => {
   }, [date]);
 
   const handleAddToDo = () => {
-    axios.post(`/api/list`, { date, title: newToDo }).then(response => {
+    axios.post(`/api/user/list`, { date, title: newToDo }).then(response => {
       setTodos([...todos, response.data]);
       setNewToDo('');
     }).catch(error => {

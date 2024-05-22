@@ -49,8 +49,6 @@ const Today = styled(DayBox)`
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
-  const [days, setDays] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     renderCalendar();
@@ -59,7 +57,7 @@ const Calendar = () => {
   const renderCalendar = () => {
     date.setDate(1);
 
-    const monthDays = [];
+    const monthDays = document.querySelector('.days');
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
     const firstDayIndex = date.getDay();
@@ -67,68 +65,39 @@ const Calendar = () => {
     const nextDays = 7 - lastDayIndex - 1;
 
     const months = [
-      "January", "February", "March", "April", "May", "June", "July",
-      "August", "September", "October", "November", "December"
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
     ];
 
     document.getElementById('month-year').innerHTML = `${months[date.getMonth()]} ${date.getFullYear()}`;
 
+    let days = "";
+
     for (let x = firstDayIndex; x > 0; x--) {
-      monthDays.push(<DayBox className="prev-date" key={`prev-${x}`}>{prevLastDay - x + 1}</DayBox>);
+      days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
     }
 
     for (let i = 1; i <= lastDay; i++) {
-      const isToday = i === new Date().getDate() && date.getMonth() === new Date().getMonth();
-      monthDays.push(
-        <DayBox
-          key={i}
-          className={isToday ? 'today' : ''}
-          onClick={() => handleDayClick(date.getFullYear(), date.getMonth() + 1, i)}
-        >
-          {i}
-        </DayBox>
-      );
+      if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
+        days += `<div class="today"><Link to="/calendar/${date.getFullYear()}-${date.getMonth() + 1}-${i}">${i}</Link></div>`;
+      } else {
+        days += `<div><Link to="/calendar/${date.getFullYear()}-${date.getMonth() + 1}-${i}">${i}</Link></div>`;
+      }
     }
 
     for (let j = 1; j <= nextDays; j++) {
-      monthDays.push(<DayBox className="next-date" key={`next-${j}`}>{j}</DayBox>);
+      days += `<div class="next-date">${j}</div>`;
+      monthDays.innerHTML = days;
     }
-
-    setDays(monthDays);
-  };
-
-  const handleDayClick = (year, month, day) => {
-    navigate(`/calender/${year}-${month}-${day}`);
-  };
-
-  const handlePrevClick = () => {
-    setDate(new Date(date.setMonth(date.getMonth() - 1)));
-  };
-
-  const handleNextClick = () => {
-    setDate(new Date(date.setMonth(date.getMonth() + 1)));
   };
 
   return (
-    <CalendarWrapper>
-      <CalendarHeader>
-        <button onClick={handlePrevClick}>&lt;</button>
-        <div id="month-year"></div>
-        <button onClick={handleNextClick}>&gt;</button>
-      </CalendarHeader>
-      <CalendarBody>
-        <DayNames>
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
-        </DayNames>
-        <Days>{days}</Days>
-      </CalendarBody>
-    </CalendarWrapper>
+    <div className="calendar">
+      <div id="month-year"></div>
+      <div className="days"></div>
+      <button id="prev" onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}>Prev</button>
+      <button id="next" onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}>Next</button>
+    </div>
   );
 };
 
