@@ -11,6 +11,8 @@ import Calendar from './page/Calendar';
 import ToDoList from './services/ToDoList';
 import RegistrationForm from './auth/Registration';
 import LogoutForm from './auth/LogoutForm';
+import styled from 'styled-components';
+
 
 const Test = styled.div`
   background-color: var(--color-purple-50);
