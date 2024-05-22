@@ -1,7 +1,7 @@
 import { LOCAL_API_BASE_URL } from "./globalVariables.js";
 
-const login = async (name, password) => {
-  const userInfo = { name, password };
+const login = async (username, password) => {
+  const userInfo = { username, password };
   try {
     const result = await fetch(`${LOCAL_API_BASE_URL}/auth/login`, {
       method: "POST",

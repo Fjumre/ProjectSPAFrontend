@@ -1,12 +1,12 @@
-import { LOCAL_API_BASE_URL } from "./globalVariables.js";
+import { LOCAL_API_BASE_URL } from './globalVariables.js';
 
-const register = async (name, password, email, phoneNumber) => {
-  const userInfo = { name, password, email, phoneNumber };
+const register = async (username, password, email, phoneNumber) => {
+  const userInfo = { username, password, email, phoneNumber };
   try {
     const result = await fetch(`${LOCAL_API_BASE_URL}/auth/register`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(userInfo)
     });

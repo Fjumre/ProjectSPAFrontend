@@ -7,27 +7,34 @@ const ToDoList = () => {
   const [todos, setTodos] = useState([]);
   const [newToDo, setNewToDo] = useState('');
   
+  const currentDate = new Date().toISOString().split('T')[0];
+
   useEffect(() => {
-    // Fetch todos for the specific date
-    axios.get(`/api/user/list/${date}`).then(response => {
-      setTodos(response.data);
-    }).catch(error => {
-      console.error('Error fetching todos:', error);
-    });
+    const fetchTodos = async () => {
+      try {
+        const response = await axios.get(`/api/user/list/${date || currentDate}`);
+        setTodos(response.data);
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+      }
+    };
+
+    fetchTodos();
   }, [date]);
 
-  const handleAddToDo = () => {
-    axios.post(`/api/user/list`, { date, title: newToDo }).then(response => {
+  const handleAddToDo = async () => {
+    try {
+      const response = await axios.post(`/api/user/list`, { date: date || currentDate, title: newToDo });
       setTodos([...todos, response.data]);
       setNewToDo('');
-    }).catch(error => {
+    } catch (error) {
       console.error('Error adding todo:', error);
-    });
+    }
   };
 
   return (
     <div>
-      <h1>To-Dos for {date}</h1>
+      <h1>To-Dos for {date || currentDate}</h1>
       <ul>
         {todos.map(todo => (
           <li key={todo.id}>{todo.title}</li>

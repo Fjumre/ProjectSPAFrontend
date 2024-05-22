@@ -3,7 +3,10 @@
 
 function Contact(){
     return(
-        <div>Contact</div>
+        <>
+        <h1>Contact</h1>
+        <h2>Something@email.com</h2>
+        </>
     )
 
 }
