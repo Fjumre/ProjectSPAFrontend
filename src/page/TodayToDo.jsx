@@ -8,7 +8,7 @@ function TodayToDo(){
       <h1>ToDo</h1>
       <li>
         <ol>
-          <TodaysList/>
+        <TodaysList/>
         </ol>
       </li>
   
