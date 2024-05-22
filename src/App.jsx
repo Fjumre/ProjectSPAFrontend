@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import styled from 'styled-components';
 import Applayout from './layout/Applayout';
 import PageNotFound from './page/PageNotFound';
 import Home from './page/Home';

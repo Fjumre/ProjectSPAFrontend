@@ -14,5 +14,3 @@ COPY --from=build-stage /app/dist/ /usr/share/nginx/html
 # Copy the default nginx.conf to get the try-files directive to work with react routerf
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
