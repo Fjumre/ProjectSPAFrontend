@@ -8,7 +8,7 @@ import { useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Calendar from './page/Calendar';
-import ToDoList from './service/ToDoList';
+import ToDoList from './services/ToDoList';
 import RegistrationForm from './auth/Registration';
 import LogoutForm from './auth/LogoutForm';
 
