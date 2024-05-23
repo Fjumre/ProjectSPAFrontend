@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import register from '../services/Registration';
+import 'landscaping.css'
+
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
@@ -46,7 +48,7 @@ const RegistrationForm = () => {
         <input type="number" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} required/>
       </label>
       <button type="submit" disabled={isLoading}>Register</button>
-      {error && <div>{error}</div>}
+      {error && <div role="alert" className="error-message">{error}</div>}
     </form>
   );
 };

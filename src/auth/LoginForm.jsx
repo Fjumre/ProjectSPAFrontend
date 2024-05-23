@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import login from '../services/apiFacade';
+import 'landscaping.css'
+
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -36,7 +38,7 @@ const LoginForm = () => {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
       </label>
       <button type="submit" disabled={isLoading}>Login</button>
-      {error && <div>{error}</div>}
+      {error && <div role="alert" className="error-message">{error}</div>}
     </form>
   );
 };

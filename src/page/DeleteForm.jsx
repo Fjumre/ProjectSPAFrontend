@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import doDelete from '../services/doDelete';
+import 'landscaping.css'
+
 
 const DeleteForm = ({ id }) => {
   const [password, setPassword] = useState('');
@@ -31,7 +33,7 @@ const DeleteForm = ({ id }) => {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
       </label>
       <button type="submit" disabled={isLoading}>Delete Account</button>
-      {error && <div>{error}</div>}
+      {error && <div role="alert" className="error-message">{error}</div>}
     </form>
   );
 };
