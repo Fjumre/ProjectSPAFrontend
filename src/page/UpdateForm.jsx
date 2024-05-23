@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import update from '../services/Update';
 import UserDetails from '../services/getUserDetails'; 
-import './landscaping.css'; 
+import '../landscaping.css'; 
 
 const UpdateForm = ({ id }) => {
   const [username, setUsername] = useState('');
