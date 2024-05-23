@@ -45,7 +45,7 @@ const RegistrationForm = () => {
       </label>
       <label>
         Phone Number:
-        <input type="number" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} required/>
+        <input type="tel" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} required/>
       </label>
       <button type="submit" disabled={isLoading}>Register</button>
       {error && <div role="alert" className="error-message">{error}</div>}
