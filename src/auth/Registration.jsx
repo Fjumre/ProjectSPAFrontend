@@ -19,7 +19,8 @@ const RegistrationForm = () => {
       const user = await register(username, password, email, phoneNumber);
       console.log("Registration successful", user);
       setIsLoading(false);
-      navigate('/home');
+      const currentDate = new Date().toISOString().split('T')[0];
+      navigate(`/calendar/${currentDate}`);
     } catch (e) {
       setError('Registration failed: ' + e.message);
       setIsLoading(false);
@@ -30,19 +31,19 @@ const RegistrationForm = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Name:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        <input type="username" value={username} onChange={e => setUsername(e.target.value)} required/>
       </label>
       <label>
         Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
       </label>
       <label>
         Email:
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required/>
       </label>
       <label>
         Phone Number:
-        <input type="tel" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
+        <input type="number" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} required/>
       </label>
       <button type="submit" disabled={isLoading}>Register</button>
       {error && <div>{error}</div>}
