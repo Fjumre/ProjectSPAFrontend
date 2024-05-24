@@ -18,6 +18,7 @@ const LoginForm = () => {
     try {
       const user = await login(username, password);
       console.log("Login successful", user);
+      setIsAuthenticated(true);
       setIsLoading(false);
       const currentDate = new Date().toISOString().split('T')[0];
       navigate(`/calendar/${currentDate}`);
