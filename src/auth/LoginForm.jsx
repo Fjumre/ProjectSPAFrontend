@@ -4,7 +4,7 @@ import login from '../services/apiFacade';
 import '../landscaping.css'; 
 
 
-const LoginForm = () => {
+const LoginForm = (setIsAuthenticated ) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);

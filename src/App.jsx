@@ -14,6 +14,7 @@ import LogoutForm from './auth/LogoutForm';
 import styled from 'styled-components';
 
 
+
 const Test = styled.div`
   background-color: var(--color-purple-50);
 `;
@@ -24,7 +25,6 @@ function App() {
 
   return (
     <BrowserRouter>
-    <MainNav isLoggedIn={isAuthenticated} />
       <Routes>
         <Route element={<Applayout />}>
           <Route index element={<Navigate to='/home' />} />
