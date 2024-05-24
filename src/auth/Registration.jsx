@@ -30,6 +30,7 @@ const RegistrationForm = () => {
   };
 
   return (
+    <div className='centered'>
     <form onSubmit={handleSubmit}>
       <label>
         Name:
@@ -50,6 +51,7 @@ const RegistrationForm = () => {
       <button type="submit" disabled={isLoading}>Register</button>
       {error && <div role="alert" className="error-message">{error}</div>}
     </form>
+    </div>
   );
 };
 

@@ -33,8 +33,8 @@ const ToDoList = () => {
   };
 
   return (
-    <div>
-      <h1>To-Dos for {date || currentDate}</h1>
+    <div className='centered'>
+      <h1>To-buy for {date || currentDate}</h1>
       <ul>
         {todos.map(todo => (
           <li key={todo.id}>{todo.title}</li>

@@ -28,6 +28,8 @@ const LoginForm = () => {
   };
 
   return (
+    <div className='centered'>
+      
     <form onSubmit={handleSubmit}>
       <label>
         Username:
@@ -40,6 +42,7 @@ const LoginForm = () => {
       <button type="submit" disabled={isLoading}>Login</button>
       {error && <div role="alert" className="error-message">{error}</div>}
     </form>
+    </div>
   );
 };
 

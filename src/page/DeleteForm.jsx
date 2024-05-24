@@ -27,6 +27,7 @@ const DeleteForm = ({ id }) => {
   };
 
   return (
+    <div className='centered'>
     <form onSubmit={handleSubmit}>
       <label>
         Password:
@@ -35,6 +36,7 @@ const DeleteForm = ({ id }) => {
       <button type="submit" disabled={isLoading}>Delete Account</button>
       {error && <div role="alert" className="error-message">{error}</div>}
     </form>
+    </div>
   );
 };
 

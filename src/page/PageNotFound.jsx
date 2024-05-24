@@ -7,11 +7,11 @@ function PageNotFound(){
     const navigate= useNavigate();
   
     return(
-      <>
+      <div className="centered">
       <h1>404: Page not found</h1>
       <button onClick={()=> navigate(-1)}>Back</button><br/>
       <button onClick={()=> navigate('/home')}>Back to homepage</button>
-      </>
+      </div>
     )
   }
 

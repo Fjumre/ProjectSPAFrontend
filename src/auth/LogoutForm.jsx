@@ -13,9 +13,11 @@ const LogoutForm = ({ setIsAuthenticated, setUser }) => {
   };
 
   return (
+    <div className='centered'>
     <header>
       <button onClick={handleLogout}>Logout</button>
     </header>
+    </div>
   );
 };
 

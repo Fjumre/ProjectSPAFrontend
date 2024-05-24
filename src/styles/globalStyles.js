@@ -5,17 +5,6 @@ const GlobalStyles = createGlobalStyle`
 
 
       --color-purple-50: #B695C0;
-      --color-purple-100: #222211;
-      --color-purple-200: #666f69;
-      --color-purple-300: #123a45;
-      --color-purple-400: #333d33;
-      --color-purple-500: #209f54;
-
-
-      --color-gray-300: #d4d4d4;
-      --color-gray-400: #333645;
-      --color-gray-500: #d4f5d4;
-
 
   }
 
@@ -23,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 55px;
+    font-size: 20px;
   }
 
   body{
