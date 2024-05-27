@@ -78,3 +78,41 @@ h1 {
   font-size: 35px;
   color: black;
 }
+
+.backgroundhome{
+  background-image: url('/backgroundhome.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.backgroundcontact{
+  background-image: url('/backgroundcontact.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgroundregistration{
+  background-image: url('/backgroundregistration.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -29,6 +29,7 @@ const LoginForm = (setIsAuthenticated ) => {
   };
 
   return (
+    <div className='backgroundregistration'>
     <div className='centered'>
       
     <form onSubmit={handleSubmit}>
@@ -43,6 +44,7 @@ const LoginForm = (setIsAuthenticated ) => {
       <button type="submit" disabled={isLoading}>Login</button>
       {error && <div role="alert" className="error-message">{error}</div>}
     </form>
+    </div>
     </div>
   );
 };
