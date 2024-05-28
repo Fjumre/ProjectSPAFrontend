@@ -17,7 +17,6 @@ function MainNav({ isLoggedIn }) {
         {isLoggedIn && (
           <>
             <li><NavLink to='/calendar'>Calendar</NavLink></li>
-            <li><NavLink to='/calendar/new'>New To Buy</NavLink></li>
             <li><NavLink to='/logout'>Logout</NavLink></li>
           </>
         )}

@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import login from '../services/apiFacade';
 import '../landscaping.css'; 
 
-
-const LoginForm = (setIsAuthenticated ) => {
+const LoginForm = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -30,21 +29,20 @@ const LoginForm = (setIsAuthenticated ) => {
 
   return (
     <div className='backgroundregistration'>
-    <div className='centered'>
-      
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} required/>
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
-      </label>
-      <button type="submit" disabled={isLoading}>Login</button>
-      {error && <div role="alert" className="error-message">{error}</div>}
-    </form>
-    </div>
+      <div className='centered'>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Username:
+            <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+          </label>
+          <label>
+            Password:
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+          </label>
+          <button type="submit" disabled={isLoading}>Login</button>
+          {error && <div role="alert" className="error-message">{error}</div>}
+        </form>
+      </div>
     </div>
   );
 };

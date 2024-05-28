@@ -16,6 +16,7 @@ const login = async (username, password) => {
     }
 
     const data = await result.json();
+    localStorage.setItem('authToken', data.token);
     return data;
   } catch (e) {
     console.error('Failed to fetch: ', e);

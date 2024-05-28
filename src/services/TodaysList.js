@@ -14,8 +14,8 @@ const TodaysList = () => {
         const response = await axios.get(`/api/user/list/${currentDate}`);
         setTodos(response.data);
       } catch (error) {
-        setError('Error fetching todos');
-        console.error('Error fetching todos:', error);
+        setError('Error fetching to buys');
+        console.error('Error fetching to buys:', error);
       }
     };
 
@@ -24,7 +24,7 @@ const TodaysList = () => {
 
   return (
     <div>
-      <h1>To-Dos for {currentDate}</h1>
+      <h1>To-Buys for {currentDate}</h1>
       {error && <p>{error}</p>}
       <ul>
         {todos.map(todo => (

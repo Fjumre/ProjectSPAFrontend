@@ -8,16 +8,9 @@ import { useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Calendar from './page/Calendar';
-import ToDoList from './services/ToDoList';
 import RegistrationForm from './auth/Registration';
 import LogoutForm from './auth/LogoutForm';
-import styled from 'styled-components';
-
-
-
-const Test = styled.div`
-  background-color: var(--color-purple-50);
-`;
+import ToDoListForm from './page/ToDoListForm';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -46,7 +39,7 @@ function App() {
             path='/calendar/:date'
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <ToDoList />
+                <ToDoListForm />
               </ProtectedRoute>
             }
           />

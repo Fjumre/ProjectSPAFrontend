@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import CreateForm from './CreateForm';  // Import the CreateForm component
 
 const CalendarWrapper = styled.div`
   width: 350px;
@@ -49,9 +50,14 @@ const Today = styled(DayBox)`
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleDateClick = (year, month, day) => {
+    setSelectedDate(new Date(year, month, day));
+  };
 
   const renderCalendar = () => {
-    const firstDayIndex = date.getDay();
+    const firstDayIndex = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
     const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
@@ -69,10 +75,27 @@ const Calendar = () => {
     }
 
     for (let i = 1; i <= lastDay; i++) {
-      if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-        daysArray.push(<Today key={i}><Link to={`/calendar/${date.getFullYear()}-${date.getMonth() + 1}-${i}`}>{i}</Link></Today>);
+      const isToday = i === new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear();
+      const isSelected = i === selectedDate.getDate() && date.getMonth() === selectedDate.getMonth() && date.getFullYear() === selectedDate.getFullYear();
+
+      if (isToday) {
+        daysArray.push(
+          <Today key={i} onClick={() => handleDateClick(date.getFullYear(), date.getMonth(), i)}>
+            {i}
+          </Today>
+        );
+      } else if (isSelected) {
+        daysArray.push(
+          <DayBox key={i} style={{ backgroundColor: '#c0c0c0' }} onClick={() => handleDateClick(date.getFullYear(), date.getMonth(), i)}>
+            {i}
+          </DayBox>
+        );
       } else {
-        daysArray.push(<DayBox key={i}><Link to={`/calendar/${date.getFullYear()}-${date.getMonth() + 1}-${i}`}>{i}</Link></DayBox>);
+        daysArray.push(
+          <DayBox key={i} onClick={() => handleDateClick(date.getFullYear(), date.getMonth(), i)}>
+            {i}
+          </DayBox>
+        );
       }
     }
 
@@ -84,23 +107,26 @@ const Calendar = () => {
   };
 
   return (
-    <CalendarWrapper>
-      <CalendarHeader>
-        <button onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}>Prev</button>
-        <div id="month-year">{`${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`}</div>
-        <button onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}>Next</button>
-      </CalendarHeader>
-      <CalendarBody>
-        <DayNames>
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <DayBox key={day}>{day}</DayBox>
-          ))}
-        </DayNames>
-        <Days className="days">
-          {renderCalendar()}
-        </Days>
-      </CalendarBody>
-    </CalendarWrapper>
+    <>
+      <CalendarWrapper>
+        <CalendarHeader>
+          <button onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}>Prev</button>
+          <div id="month-year">{`${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`}</div>
+          <button onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}>Next</button>
+        </CalendarHeader>
+        <CalendarBody>
+          <DayNames>
+            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+              <DayBox key={day}>{day}</DayBox>
+            ))}
+          </DayNames>
+          <Days className="days">
+            {renderCalendar()}
+          </Days>
+        </CalendarBody>
+      </CalendarWrapper>
+      <CreateForm selectedDate={selectedDate} /> 
+    </>
   );
 };
 
