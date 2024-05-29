@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import CreateForm from './CreateForm';  // Import the CreateForm component
+import CreateForm from './CreateForm';  
+import '../landscaping.css'; 
+
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+`;
 
 const CalendarWrapper = styled.div`
-  width: 350px;
-  border: 1px solid #ddd;
+  width: 375px;
+  border: 1px solid #330303;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  margin: 20px auto;
+  background-color: #fafafa;
 `;
 
 const CalendarHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   background-color: #007bff;
-  color: #fff;
+  color: #3811d6;
 `;
 
 const CalendarBody = styled.div`
@@ -27,11 +34,13 @@ const CalendarBody = styled.div`
 const DayNames = styled.div`
   display: flex;
   flex-wrap: wrap;
+  color: #1815df;
 `;
 
 const Days = styled.div`
   display: flex;
   flex-wrap: wrap;
+  color: #1815df;
 `;
 
 const DayBox = styled.div`
@@ -44,7 +53,7 @@ const DayBox = styled.div`
 
 const Today = styled(DayBox)`
   background-color: #007bff;
-  color: white;
+  color: #082cbc;
   border-radius: 50%;
 `;
 
@@ -107,7 +116,8 @@ const Calendar = () => {
   };
 
   return (
-    <>
+    <div className='backgroundcalendar'>
+    <Container>
       <CalendarWrapper>
         <CalendarHeader>
           <button onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}>Prev</button>
@@ -126,7 +136,8 @@ const Calendar = () => {
         </CalendarBody>
       </CalendarWrapper>
       <CreateForm selectedDate={selectedDate} /> 
-    </>
+    </Container>
+    </div>
   );
 };
 

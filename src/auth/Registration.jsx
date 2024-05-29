@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import register from '../services/Registration';
 import '../landscaping.css'; 
 
-
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +15,10 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
     setIsLoading(true);
     setError('');
     try {
@@ -31,28 +35,27 @@ const RegistrationForm = () => {
 
   return (
     <div className='backgroundregistration'>
-    <div className='centered'>
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="username" value={username} onChange={e => setUsername(e.target.value)} required/>
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
-      </label>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required/>
-      </label>
-      <label>
-        Phone Number:
-        <input type="tel" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} required/>
-      </label>
-      <button type="submit" disabled={isLoading}>Register</button>
-      {error && <div role="alert" className="error-message">{error}</div>}
-    </form>
-    </div>
+      <div className='centered'>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input type="username" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} required/>
+          </label>
+          <label>
+            <input type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} required/>
+          </label>
+          <label>
+            <input type="password" placeholder='Confirm Password' value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required/>
+          </label>
+          <label>
+            <input type="email" placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} required/>
+          </label>
+          <label>
+            <input type="tel" placeholder='Phone Number' value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} required/>
+          </label>
+          <button type="submit" disabled={isLoading}>Register</button>
+          {error && <div role="alert" className="error-message">{error}</div>}
+        </form>
+      </div>
     </div>
   );
 };

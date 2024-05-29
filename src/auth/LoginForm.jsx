@@ -32,12 +32,12 @@ const LoginForm = ({ setIsAuthenticated }) => {
       <div className='centered'>
         <form onSubmit={handleSubmit}>
           <label>
-            Username:
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+          
+            <input type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} required />
           </label>
           <label>
-            Password:
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+            
+            <input type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
           <button type="submit" disabled={isLoading}>Login</button>
           {error && <div role="alert" className="error-message">{error}</div>}

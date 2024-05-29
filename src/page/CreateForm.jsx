@@ -36,12 +36,13 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
   };
 
   return (
+    
     <div className='centered'>
       <form onSubmit={handleSubmit}>
         <label>
-          Title:
           <input
             type="text"
+            placeholder='Title'
             value={title}
             onChange={e => setTitle(e.target.value)}
             aria-label="Title"
@@ -49,7 +50,7 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-          Date:
+          
           <input
             type="date"
             value={date}
@@ -59,19 +60,21 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-          Capacity:
+        
           <input
             type="number"
+            placeholder='Capacity'
             value={capacity}
             onChange={e => setCapacity(e.target.value)}
             aria-label="Capacity"
           />
         </label>
         <label>
-          Price:
+          
           <input
             type="number"
             step="0.01"
+            placeholder='Price'
             value={price}
             onChange={e => setPrice(e.target.value)}
             aria-label="Price"
@@ -79,9 +82,10 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-          Status:
+         
           <input
             type="text"
+            placeholder='Status'
             value={status}
             onChange={e => setStatus(e.target.value)}
             aria-label="Status"
