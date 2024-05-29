@@ -1,8 +1,8 @@
-import { LOCAL_API_BASE_URL } from './globalVariables.js';
+import { PRODUCTION_API_BASE_URL } from './globalVariables.js';
 
 const UserDetails = async (date) => {
   try {
-    const result = await fetch(`${LOCAL_API_BASE_URL}/user/list/${date}`, {
+    const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/list/${date}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

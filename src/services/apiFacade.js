@@ -1,9 +1,9 @@
-import { LOCAL_API_BASE_URL } from "./globalVariables.js";
+import {PRODUCTION_API_BASE_URL } from "./globalVariables.js";
 
 const login = async (username, password) => {
   const userInfo = { username, password };
   try {
-    const result = await fetch(`${LOCAL_API_BASE_URL}/auth/login`, {
+    const result = await fetch(`${PRODUCTION_API_BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

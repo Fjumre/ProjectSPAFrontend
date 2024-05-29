@@ -1,4 +1,4 @@
-import { LOCAL_API_BASE_URL } from './globalVariables.js';
+import {PRODUCTION_API_BASE_URL } from './globalVariables.js';
 
 const update = async (id, username, oldPassword, newPassword, email, phoneNumber) => {
   const userInfo = { username, oldPassword, email, phoneNumber };
@@ -8,7 +8,7 @@ const update = async (id, username, oldPassword, newPassword, email, phoneNumber
   }
 
   try {
-    const result = await fetch(`${LOCAL_API_BASE_URL}/user/update/${id}`, {
+    const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/update/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

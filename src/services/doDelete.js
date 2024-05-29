@@ -1,9 +1,9 @@
-import { LOCAL_API_BASE_URL } from './globalVariables.js';
+import { PRODUCTION_API_BASE_URL } from './globalVariables.js';
 
 const doDelete = async (id, username, password, email, phoneNumber) => {
   const userInfo = { username, password, email, phoneNumber };
   try {
-    const result = await fetch(`${LOCAL_API_BASE_URL}/user/delete/${id}`, {
+    const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/delete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

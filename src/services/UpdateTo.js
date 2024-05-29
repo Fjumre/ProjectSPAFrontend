@@ -1,10 +1,10 @@
-import { LOCAL_API_BASE_URL } from './globalVariables.js';
+import {PRODUCTION_API_BASE_URL} from './globalVariables.js';
 
 const updateTo = async (id, title, date, capacity, price, status) => {
   const todoInfo = { title, date, capacity, price, status };
 
   try {
-    const result = await fetch(`${LOCAL_API_BASE_URL}/user/list/update/${id}`, {
+    const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/list/update/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

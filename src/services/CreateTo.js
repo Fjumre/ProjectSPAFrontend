@@ -1,4 +1,4 @@
-import { LOCAL_API_BASE_URL } from './globalVariables.js';
+import {PRODUCTION_API_BASE_URL } from './globalVariables.js';
 import { getToken } from '../auth/Token.jsx';
 
 const createTo = async (title, date, capacity, price, status) => {
@@ -10,7 +10,7 @@ const createTo = async (title, date, capacity, price, status) => {
   }
 
   try {
-    const result = await fetch(`${LOCAL_API_BASE_URL}/user/list/create`, {
+    const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/list/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
