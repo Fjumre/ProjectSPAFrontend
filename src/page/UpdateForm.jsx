@@ -63,9 +63,9 @@ const UpdateForm = ({ id }) => {
     <div className='centered'>
     <form onSubmit={handleSubmit}>
       <label>
-        Username:
         <input
           type="text"
+          placeholder='Username'
           value={username}
           onChange={e => setUsername(e.target.value)}
           aria-label="Username"
@@ -73,9 +73,9 @@ const UpdateForm = ({ id }) => {
         />
       </label>
       <label>
-        Old Password:
         <input
           type="password"
+          placeholder='Old Password'
           value={oldPassword}
           onChange={e => setOldPassword(e.target.value)}
           aria-label="Old Password"
@@ -83,27 +83,28 @@ const UpdateForm = ({ id }) => {
         />
       </label>
       <label>
-        New Password:
         <input
           type="password"
+          placeholder='New Password'
           value={newPassword}
           onChange={e => setNewPassword(e.target.value)}
           aria-label="New Password"
         />
       </label>
       <label>
-        Confirm New Password:
+        
         <input
           type="password"
+          placeholder='Confirm New Password'
           value={confirmNewPassword}
           onChange={e => setConfirmNewPassword(e.target.value)}
           aria-label="Confirm New Password"
         />
       </label>
       <label>
-        Email:
         <input
           type="email"
+          placeholder='Email'
           value={email}
           onChange={e => setEmail(e.target.value)}
           aria-label="Email"
@@ -111,9 +112,10 @@ const UpdateForm = ({ id }) => {
         />
       </label>
       <label>
-        Phone Number:
+        
         <input
           type="tel"
+          placeholder='Phone Number'
           value={phoneNumber}
           onChange={e => setPhoneNumber(e.target.value)}
           aria-label="Phone Number"

@@ -36,9 +36,9 @@ const UpdateToDoForm = ({ selectedToDo }) => {
       ) : (
         <form onSubmit={handleSubmit}>
           <label>
-            Title:
             <input
               type="text"
+              placeholder='Title'
               value={title}
               onChange={e => setTitle(e.target.value)}
               aria-label="Title"
@@ -46,9 +46,9 @@ const UpdateToDoForm = ({ selectedToDo }) => {
             />
           </label>
           <label>
-            Date:
             <input
               type="date"
+              placeholder='Date'
               value={date}
               onChange={e => setDate(e.target.value)}
               aria-label="Date"
@@ -56,19 +56,21 @@ const UpdateToDoForm = ({ selectedToDo }) => {
             />
           </label>
           <label>
-            Capacity:
+            
             <input
               type="number"
+              placeholder='Capacity'
               value={capacity}
               onChange={e => setCapacity(e.target.value)}
               aria-label="Capacity"
             />
           </label>
           <label>
-            Price:
+           
             <input
               type="number"
               step="0.01"
+              placeholder='Price'
               value={price}
               onChange={e => setPrice(e.target.value)}
               aria-label="Price"
@@ -76,9 +78,9 @@ const UpdateToDoForm = ({ selectedToDo }) => {
             />
           </label>
           <label>
-            Status:
             <input
               type="text"
+              placeholder='Status'
               value={status}
               onChange={e => setStatus(e.target.value)}
               aria-label="Status"
