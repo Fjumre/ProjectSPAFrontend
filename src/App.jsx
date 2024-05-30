@@ -8,7 +8,7 @@ import { useState } from 'react';
 import LoginForm from './auth/LoginForm';
 import ProtectedRoute from './auth/ProtectedRoute';
 import Calendar from './page/Calendar';
-import RegistrationForm from './auth/RegistrationForm';
+import RegistrationForm from './auth/Registration';
 import LogoutForm from './auth/LogoutForm';
 import ToDoListForm from './page/ToDoListForm';
 
@@ -25,7 +25,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<LoginForm setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path='/registration' element={<RegistrationForm setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path='/registration' element={<RegistrationForm setIsAuthenticated={setIsAuthenticated}/>} />
+          
           <Route
             path='/calendar'
             element={
