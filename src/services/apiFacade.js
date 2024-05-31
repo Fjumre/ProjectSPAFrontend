@@ -1,4 +1,4 @@
-import {PRODUCTION_API_BASE_URL } from "./globalVariables.js";
+import { PRODUCTION_API_BASE_URL } from "./globalVariables.js";
 
 const login = async (username, password) => {
   const userInfo = { username, password };
@@ -16,7 +16,10 @@ const login = async (username, password) => {
     }
 
     const data = await result.json();
+    console.log("Login response data:", data); 
     localStorage.setItem('authToken', data.token);
+    localStorage.setItem('username', data.username);
+    localStorage.setItem('userId', data.userId); 
     return data;
   } catch (e) {
     console.error('Failed to fetch: ', e);

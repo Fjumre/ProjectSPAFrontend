@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import createTo from '../services/CreateTo';
-import '../landscaping.css'; 
+import '../landscaping.css';
 
 const CreateForm = ({ selectedDate, onAddToDo }) => {
   const [title, setTitle] = useState('');
@@ -36,7 +36,6 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
   };
 
   return (
-    
     <div className='centered'>
       <form onSubmit={handleSubmit}>
         <label>
@@ -50,7 +49,6 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-          
           <input
             type="date"
             value={date}
@@ -60,7 +58,6 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-        
           <input
             type="number"
             placeholder='Capacity'
@@ -70,7 +67,6 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-          
           <input
             type="number"
             step="0.01"
@@ -82,7 +78,6 @@ const CreateForm = ({ selectedDate, onAddToDo }) => {
           />
         </label>
         <label>
-         
           <input
             type="text"
             placeholder='Status'

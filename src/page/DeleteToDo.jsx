@@ -1,41 +1,34 @@
-import React, { useState } from 'react';
-import doDelete from '../services/doDelete';
-import '../landscaping.css';
+import React from 'react';
+import axios from 'axios';
+import { PRODUCTION_API_BASE_URL } from '../services/globalVariables';
+import { getToken } from '../auth/Token';
 
 const DeleteToDo = ({ id, onDelete }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [deleted, setDeleted] = useState(false);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-    setError('');
-
+  const handleDelete = async () => {
     try {
-      await doDelete(id);
-      console.log("Delete successful");
-      setDeleted(true);  
-      onDelete(id);  // Call the onDelete function passed from the parent
-      setIsLoading(false);
-    } catch (e) {
-      setError('Delete failed: ' + e.message);
-      setIsLoading(false);
+      const token = getToken();
+      if (!token) {
+        throw new Error('No authorization token found');
+      }
+
+      const response = await axios.delete(`${PRODUCTION_API_BASE_URL}/user/list/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (response.status === 204) {
+        console.log('Delete successful:', id);
+        onDelete(id);
+      } else {
+        console.error('Delete failed: Unexpected status', response.status);
+      }
+    } catch (error) {
+      console.error('Error deleting to-do:', error.response ? error.response.data : error.message);
     }
   };
 
-  return (
-    <div className='centered'>
-      {deleted ? (
-        <div role="alert" className="success-message">To-buy deleted successfully.</div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <button type="submit" disabled={isLoading}>Delete Product</button>
-          {error && <div role="alert" className="error-message">{error}</div>}
-        </form>
-      )}
-    </div>
-  );
+  return <button onClick={handleDelete}>Delete</button>;
 };
 
 export default DeleteToDo;

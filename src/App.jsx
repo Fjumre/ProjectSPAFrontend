@@ -11,6 +11,8 @@ import Calendar from './page/Calendar';
 import RegistrationForm from './auth/Registration';
 import LogoutForm from './auth/LogoutForm';
 import ToDoListForm from './page/ToDoListForm';
+import MainNav from './layout/MainNav';
+import UpdateForm from './page/UpdateForm';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -18,6 +20,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <MainNav isLoggedIn={isAuthenticated} />
       <Routes>
         <Route element={<Applayout />}>
           <Route index element={<Navigate to='/home' />} />
@@ -25,13 +28,12 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<LoginForm setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path='/registration' element={<RegistrationForm setIsAuthenticated={setIsAuthenticated}/>} />
-          
+          <Route path='/registration' element={<RegistrationForm setIsAuthenticated={setIsAuthenticated} />} />
           <Route
             path='/calendar'
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <Calendar />
+                <ToDoListForm />
               </ProtectedRoute>
             }
           />
@@ -40,6 +42,14 @@ function App() {
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <ToDoListForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/update/:id'
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <UpdateForm />
               </ProtectedRoute>
             }
           />

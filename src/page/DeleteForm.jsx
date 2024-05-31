@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import doDelete from '../services/doDelete';
-import '../landscaping.css'; 
-
+import Delete from '../services/Delete';
+import '../landscaping.css';
 
 const DeleteForm = ({ id }) => {
   const [password, setPassword] = useState('');
@@ -16,10 +15,13 @@ const DeleteForm = ({ id }) => {
     setError('');
 
     try {
-      await doDelete(id, password);
+      await Delete(id, password); 
       console.log("Delete successful");
       setIsLoading(false);
-      navigate('/home');
+
+      // Clear token or any authentication data
+      localStorage.removeItem('authToken'); // Assuming you store the token in localStorage with key 'authToken'
+      navigate('/login'); // Redirect to login page after deletion
     } catch (e) {
       setError('Delete failed: ' + e.message);
       setIsLoading(false);
@@ -28,14 +30,20 @@ const DeleteForm = ({ id }) => {
 
   return (
     <div className='centered'>
-    <form onSubmit={handleSubmit}>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-      </label>
-      <button type="submit" disabled={isLoading}>Delete Account</button>
-      {error && <div role="alert" className="error-message">{error}</div>}
-    </form>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            autoComplete="off" // Prevent auto-fill
+          />
+        </label>
+        <button type="submit" disabled={isLoading}>Delete Account</button>
+        {error && <div role="alert" className="error-message">{error}</div>}
+      </form>
     </div>
   );
 };

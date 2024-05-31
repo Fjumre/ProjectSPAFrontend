@@ -1,5 +1,5 @@
-import {PRODUCTION_API_BASE_URL } from './globalVariables.js';
-import { getToken } from '../auth/Token.jsx';
+import { PRODUCTION_API_BASE_URL } from '../services/globalVariables';
+import { getToken } from '../auth/Token';
 
 const createTo = async (title, date, capacity, price, status) => {
   const todoInfo = { title, date, capacity, price, status };

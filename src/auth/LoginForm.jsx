@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import login from '../services/apiFacade';
-import '../landscaping.css'; 
+import '../landscaping.css';
 
 const LoginForm = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
@@ -18,6 +18,8 @@ const LoginForm = ({ setIsAuthenticated }) => {
       const user = await login(username, password);
       console.log("Login successful", user);
       setIsAuthenticated(true);
+      localStorage.setItem('username', user.username);
+      localStorage.setItem('userId', user.userId); // Store userId
       setIsLoading(false);
       const currentDate = new Date().toISOString().split('T')[0];
       navigate(`/calendar/${currentDate}`);
@@ -32,11 +34,9 @@ const LoginForm = ({ setIsAuthenticated }) => {
       <div className='centered'>
         <form onSubmit={handleSubmit}>
           <label>
-          
             <input type="text" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} required />
           </label>
           <label>
-            
             <input type="password" placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} required />
           </label>
           <button type="submit" disabled={isLoading}>Login</button>

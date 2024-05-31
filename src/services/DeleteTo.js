@@ -13,10 +13,9 @@ const doDelete = async (id) => {
       throw new Error('Network response was not ok ' + result.status);
     }
 
-    const data = await result.json();
-    return data;
+    return true;  
   } catch (e) {
-    console.error('Failed to delete To-Buy: ', e);
+    console.error('Failed to fetch: ', e);
     throw e;
   }
 };

@@ -1,7 +1,9 @@
-import {PRODUCTION_API_BASE_URL } from './globalVariables.js';
+import { PRODUCTION_API_BASE_URL } from './globalVariables';
+import { getToken } from '../auth/Token'; 
 
 const update = async (id, username, oldPassword, newPassword, email, phoneNumber) => {
   const userInfo = { username, oldPassword, email, phoneNumber };
+  const token = getToken();
 
   if (newPassword) {
     userInfo.newPassword = newPassword;
@@ -11,7 +13,8 @@ const update = async (id, username, oldPassword, newPassword, email, phoneNumber
     const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/update/${id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(userInfo)
     });
