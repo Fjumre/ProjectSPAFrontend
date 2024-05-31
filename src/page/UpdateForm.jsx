@@ -61,8 +61,7 @@ const UpdateForm = () => {
       const user = await update(id, username, oldPassword, newPassword, email, phoneNumber);
       console.log("Update successful", user);
       setIsLoading(false);
-      const currentDate = new Date().toISOString().split('T')[0];
-      navigate(`/calendar/${currentDate}`);
+    
     } catch (e) {
       setError('Update failed: ' + e.message);
       setIsLoading(false);

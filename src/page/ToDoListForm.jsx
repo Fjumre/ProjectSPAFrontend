@@ -58,11 +58,10 @@ const ToDoListForm = () => {
   const handleUpdateToDo = (updatedToDo) => {
     console.log('Updating state with:', updatedToDo);
     setTodos(todos.map(todo => todo.toDoId === updatedToDo.toDoId ? updatedToDo : todo));
-    setSelectedToDo(null);
+    setSelectedToDo(null); 
   };
 
   const handleDelete = (id) => {
-    console.log('Deleting To-Do with id:', id);
     setTodos(todos.filter(todo => todo.toDoId !== id));
   };
 
@@ -72,22 +71,16 @@ const ToDoListForm = () => {
       <ul>
         {todos.map((todo, index) => (
           <li key={todo.toDoId}>
-            {console.log(`Rendering To-Do ${index}:`, todo)}
-            {todo.title ? (
-              <div>
-                {todo.title}{" "}
-                {todo.capacity}{" "}
-                {todo.price}{" "}
-                {todo.status}
-                <div><button onClick={() => setSelectedToDo(todo)}>Update</button>
-                <DeleteToDo id={todo.toDoId} onDelete={handleDelete} /></div>
-              </div>
-            ) : (
-              <div>
-                No information available
-                <DeleteToDo id={todo.toDoId} onDelete={handleDelete} />
-              </div>
-            )}
+            <div>
+              {todo.title}{" "}
+              {todo.capacity}{" "}
+              {todo.price}{" "}
+              {todo.status}
+            </div>
+            <div>
+              <button onClick={() => setSelectedToDo(todo)}>Update</button>
+            <DeleteToDo id={todo.toDoId} onDelete={handleDelete} />
+            </div>
           </li>
         ))}
       </ul>

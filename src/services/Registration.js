@@ -16,6 +16,12 @@ const register = async (username, password, email, phoneNumber) => {
     }
 
     const data = await result.json();
+    if (data.token) {
+      localStorage.setItem('authToken', data.token);
+    } else {
+      throw new Error('No token received');
+    }
+
     return data;
   } catch (e) {
     console.error('Failed to fetch: ', e);
