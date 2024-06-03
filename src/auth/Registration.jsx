@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import register from '../services/Registration';
+import { getToken } from './Token';
 import '../landscaping.css'; 
 
 const RegistrationForm = ({ setIsAuthenticated }) => {
@@ -24,6 +25,7 @@ const RegistrationForm = ({ setIsAuthenticated }) => {
     try {
       const user = await register(username, password, email, phoneNumber);
       console.log("Registration successful", user);
+      localStorage.setItem('authToken', user.token);
       setIsAuthenticated(true);
       setIsLoading(false);
       const currentDate = new Date().toISOString().split('T')[0];

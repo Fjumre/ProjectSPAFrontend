@@ -3,6 +3,11 @@ import { getToken } from '../auth/Token';
 
 const UserDetails = async (id) => {
   const token = getToken();
+  
+  if (!token) {
+    throw new Error('No authorization token found');
+  }
+  
   try {
     const result = await fetch(`${PRODUCTION_API_BASE_URL}/user/${id}`, {
       method: 'GET',
