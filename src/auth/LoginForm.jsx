@@ -19,7 +19,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
       console.log("Login successful", user);
       setIsAuthenticated(true);
       localStorage.setItem('username', user.username);
-      localStorage.setItem('userId', user.userId); // Store userId
+      localStorage.setItem('userId', user.userId);
       setIsLoading(false);
       const currentDate = new Date().toISOString().split('T')[0];
       navigate(`/calendar/${currentDate}`);

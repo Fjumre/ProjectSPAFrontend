@@ -9,8 +9,8 @@ function MainNav({ isLoggedIn }) {
     navigate(`/calendar/${currentDate}`);
   };
 
-  const userId = localStorage.getItem('userId'); // Retrieve userId from local storage
-  const username = localStorage.getItem('username'); // Retrieve username from local storage
+  const userId = localStorage.getItem('userId');
+  const username = localStorage.getItem('username'); 
   console.log("Retrieved userId:", userId);
   console.log("Retrieved username:", username);
 

@@ -20,8 +20,8 @@ const DeleteForm = ({ id }) => {
       setIsLoading(false);
 
       // Clear token or any authentication data
-      localStorage.removeItem('authToken'); // Assuming you store the token in localStorage with key 'authToken'
-      navigate('/login'); // Redirect to login page after deletion
+      localStorage.removeItem('authToken'); 
+      navigate('/login'); 
     } catch (e) {
       setError('Delete failed: ' + e.message);
       setIsLoading(false);
