@@ -16,7 +16,8 @@ const doDelete = async (id) => {
     return true;  
   } catch (e) {
     console.error('Failed to fetch: ', e);
-    throw e;
+    window.alert('Failed to delete item. Please try again later.');
+    throw e; // Re-throw the error to propagate it further if needed
   }
 };
 
