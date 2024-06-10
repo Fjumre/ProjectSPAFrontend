@@ -38,6 +38,7 @@ const UpdateForm = () => {
     }
   }, [id]);
 
+   // Form validation
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -67,6 +68,7 @@ const UpdateForm = () => {
       setIsLoading(false);
     }
   };
+//
 
   const handleDelete = async (password) => {
     setIsLoading(true);
@@ -82,7 +84,8 @@ const UpdateForm = () => {
       setIsLoading(false);
     }
   };
-
+  
+//Form submission with input changes
   return (
     <div className='centeredflex'>
       <form onSubmit={handleSubmit}>

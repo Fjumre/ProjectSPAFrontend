@@ -49,7 +49,7 @@ const ToDoListForm = () => {
   const handleAddToDo = (newToDo) => {
     console.log('Adding new To-Do:', newToDo);
     setTodos(prevTodos => {
-      const updatedTodos = [...prevTodos, newToDo];
+      const updatedTodos = [...prevTodos, newToDo]; // Spread operator used here
       console.log('Updated Todos:', updatedTodos);
       return updatedTodos;
     });
